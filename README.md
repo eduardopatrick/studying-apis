@@ -1,4 +1,8 @@
+<<<<<<< README.md
+
 # pokedex (pokedex)
+
+Front – End Test Project
 
 A pokedex to learn more about pokemons
 
