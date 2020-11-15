@@ -1,31 +1,21 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <div class="row">
-      <q-card  class="my-card"
-      v-for="(pokemon, index) in pokemons"
-      :key="pokemon.url">
-        <q-card-section>
-          <q-img
-          :key="pokemon.url"
-          :src="
-           `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`">
-          </q-img>
-          <h5>
-            {{ pokemon.name }}
-          </h5>
-        </q-card-section>
-      </q-card>
-      </div>
+  <q-layout id="q-app" view="lHh Lpr lFf">
+     <List :pokemons="pokemons" :loading="loading" ref="list" />
   </q-layout>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import List from '../pages/pokedexList/components/List'
 
 export default {
   name: 'MainLayout',
+  components: {
+    List
+  },
   data () {
     return {
+      loading: false
     }
   },
   async beforeMount () {

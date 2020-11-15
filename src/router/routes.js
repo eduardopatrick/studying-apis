@@ -4,6 +4,16 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
+      {
+        path: '/',
+        component: () => import('pages/pokedexList/components/List.vue'),
+        name: 'pokemon-list'
+      },
+      {
+        path: '/:id',
+        component: () => import('pages/pokedexList/index.vue'),
+        name: 'pokemon-details'
+      }
     ]
   },
 
