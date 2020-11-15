@@ -6,6 +6,10 @@
 
 <script>
 export default {
-  name: 'PageIndex'
+
 }
 </script>
+
+<style lang="stylus">
+
+</style>
