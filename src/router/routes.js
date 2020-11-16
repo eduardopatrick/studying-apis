@@ -1,7 +1,7 @@
 
 const routes = [
   {
-    path: '/',
+    path: '',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       {
@@ -11,7 +11,7 @@ const routes = [
       },
       {
         path: '/:id',
-        component: () => import('pages/pokedexList/index.vue'),
+        component: () => import('pages/pokedexList/components/index.vue'),
         name: 'pokemon-details'
       }
     ]
