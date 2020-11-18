@@ -7,10 +7,8 @@ export default {
       params
     })
   },
-  async searchForPokemon (...args) {
-    const params = { ...args }
-    return axios.get(`https://pokeapi.co/api/v2/pokemon/${args}`, {
-      params
-    })
+  async searchForPokemon ({ name }) {
+    const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
+    return data
   }
 }

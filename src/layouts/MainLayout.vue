@@ -6,7 +6,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import List from '../pages/pokedexList/components/List'
+import List from '../pages/pokedexList/PokemonList'
 
 export default {
   name: 'MainLayout',
@@ -21,6 +21,10 @@ export default {
   async beforeMount () {
     try {
       await this.getAllPokemons()
+      this.$q.notify({
+        color: 'positive',
+        message: 'Pokedex: Pokemons carregados com sucesso :)'
+      })
     } catch (error) {
       this.$q.notify({
         color: 'negative',
