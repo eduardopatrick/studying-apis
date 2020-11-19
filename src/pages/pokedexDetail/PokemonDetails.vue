@@ -3,64 +3,64 @@
     <div class="container">
       <div class="row flex justify-center">
         <q-card>
-            <q-card-section horizontal>
-              <q-card-section>
-                <q-img
-                   class="pokemon-img"
-                  :key="pokemon.url"
-                  :alt="`${pokemon.name} + photo`"
-                  :src="currentImg">
-                </q-img>
-                <div class="types">
-                   <q-badge outline color="positive" :label="types.type.name"
-                   v-for="(types,index) in pokemon.types"
-                            :key="index"/>
-                </div>
-                <q-btn color="primary">See More Sprites</q-btn>
-                </q-card-section>
-              <q-card-section>
-                   <q-tabs
-                      v-model="tab"
-                      dense
-                      class="text-grey"
-                      active-color="primary"
-                      indicator-color="primary"
-                      align="justify"
-                      narrow-indicator
-                    >
-                      <q-tab name="first" label="Stats"/>
-                      <q-tab name="second" label="ETC"/>
-                      <q-tab name="third" label="ETC" />
-                    </q-tabs>
-
-                     <q-tab-panels v-model="tab" animated>
-          <q-tab-panel name="first">
-                    <ul class="list-group">
-                      <li v-for="(stats,index) in pokemon.stats"
-                          :key="index">
-                      {{ stats.stat.name }}
-                          <q-circular-progress
-                            show-value
-                            class="text-purple q-ma-md"
-                            :value="stats.base_stat"
-                            size="30px"
-                            color="purple"
-                          />
-                      </li>
-                    </ul>
-          </q-tab-panel>
-
-          <q-tab-panel name="second">
-
-          </q-tab-panel>
-
-          <q-tab-panel name="third">
-            <div class="text-h6">Movies</div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </q-tab-panel>
-        </q-tab-panels>
-              </q-card-section>
+          <q-card-section horizontal>
+            <q-card-section>
+              <q-img
+                class="pokemon-img"
+                :key="pokemon.url"
+                :alt="`${pokemon.name} + photo`"
+                :src="currentImg"
+              >
+              </q-img>
+              <div class="types">
+                <q-badge
+                  outline
+                  color="positive"
+                  :label="types.type.name"
+                  v-for="(types, index) in pokemon.types"
+                  :key="index"
+                />
+              </div>
+              <q-btn color="primary">See More Sprites</q-btn>
             </q-card-section>
+            <q-card-section>
+              <q-tabs
+                v-model="tab"
+                dense
+                class="text-grey"
+                active-color="primary"
+                indicator-color="primary"
+                align="justify"
+                narrow-indicator
+              >
+                <q-tab name="first" label="Stats" />
+                <q-tab name="second" label="ETC" />
+                <q-tab name="third" label="ETC" />
+              </q-tabs>
+
+              <q-tab-panels v-model="tab" animated>
+                <q-tab-panel name="first">
+                  <ul class="list-group">
+                    <li v-for="(stats, index) in pokemon.stats" :key="index">
+                      {{ stats.stat.name }}
+                      <q-linear-progress size="25px" :value="stats.base_stat/100" color="accent">
+                        <div class="absolute-full flex flex-left">
+                          <q-badge color="white" text-color="accent" :label="stats.base_stat" />
+                        </div>
+                      </q-linear-progress>
+                    </li>
+                  </ul>
+                </q-tab-panel>
+
+                <q-tab-panel name="second"> </q-tab-panel>
+
+                <q-tab-panel name="third">
+                  <div class="text-h6">Movies</div>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                </q-tab-panel>
+              </q-tab-panels>
+            </q-card-section>
+          </q-card-section>
         </q-card>
       </div>
     </div>
@@ -85,10 +85,6 @@ export default {
       required: true
     }
   },
-  mounted () {
-    const url = this.pokemon.sprites.front_default
-    this.currentImg = url
-  },
   async beforeMount () {
     try {
       await this.getPokemonDetail(this.identifier)
@@ -96,6 +92,7 @@ export default {
         color: 'positive',
         message: `Pokedex: Dados de ${this.pokemon.name} carregados com sucesso :)`
       })
+      this.currentImg = this.pokemon.sprites.front_default
     } catch (error) {
       this.$q.notify({
         color: 'negative',
@@ -104,14 +101,10 @@ export default {
     }
   },
   methods: {
-    ...mapActions('pokemons', [
-      'getPokemonDetail'
-    ])
+    ...mapActions('pokemons', ['getPokemonDetail'])
   },
   computed: {
-    ...mapGetters('pokemons', [
-      'pokemon'
-    ])
+    ...mapGetters('pokemons', ['pokemon'])
     // pokemonImg () {
 
     //   return

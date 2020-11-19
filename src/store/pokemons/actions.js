@@ -27,7 +27,9 @@ export const filterPokemons = async ({ commit }, { path, value }) => {
   if (path === 'pokemon') {
     commit('setPokemons', [result]) // unico objeto com array de informações sobre 1 pokemon
   } else {
-    console.log('igual a pokemons')
-    commit('setPokemons', result.pokemon) // pokemons que possuem aquele atributo em algum lugar
+    console.log('igual a pokemons', result.pokemon)
+    const pokemons = result.pokemon.filter((_, index) => index < 20).map(pokemon => pokemon.pokemon)
+    const pokemonInfo = await Promise.all(pokemons.map(pokemonService.searchForPokemon))
+    commit('setPokemons', pokemonInfo) // pokemons que possuem aquele atributo em algum lugar
   }
 }

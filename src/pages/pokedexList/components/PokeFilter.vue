@@ -73,13 +73,13 @@ export default {
       ['types', 'abilities', 'pokemons']),
     abilitiesOptions () { // copy with another format from object, to use at select options
       return this.abilities.map(ability => ({
-        value: ability.id,
+        value: ability.name,
         label: ability.name
       }))
     },
     typesOptions () {
       return this.types.map(type => ({
-        value: type.id,
+        value: type.name,
         label: type.name
       }))
     }

@@ -1,10 +1,9 @@
 import axios from 'axios'
 
 export default {
-  async getAllPokemons (args) {
-    const params = { ...args }
-    return axios.get('https://pokeapi.co/api/v2/pokemon/?limit=12&offset=0', {
-      params
+  async getAllPokemons () {
+    return axios.get('https://pokeapi.co/api/v2/pokemon', {
+      params: { limit: 12, offset: 0 }
     })
   },
   async searchForPokemon ({ name }) {
