@@ -1,4 +1,4 @@
 export default {
   pokemons: [],
-  pokemon: []
+  pokemon: {}
 }

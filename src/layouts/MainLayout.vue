@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
 import List from '../pages/pokedexList/PokemonList'
 
 export default {
@@ -17,31 +16,6 @@ export default {
     return {
       loading: false
     }
-  },
-  async beforeMount () {
-    try {
-      await this.getAllPokemons()
-      this.$q.notify({
-        color: 'positive',
-        message: 'Pokedex: Pokemons carregados com sucesso :)'
-      })
-    } catch (error) {
-      this.$q.notify({
-        color: 'negative',
-        message: 'Pokedex: falha ao carregar pokemons'
-      })
-    } finally {
-    }
-  },
-  methods: {
-    ...mapActions('pokemons', [
-      'getAllPokemons'
-    ])
-  },
-  computed: {
-    ...mapGetters('pokemons', [
-      'pokemons'
-    ])
   }
 }
 </script>
