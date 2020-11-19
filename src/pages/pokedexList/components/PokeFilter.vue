@@ -95,7 +95,6 @@ export default {
     },
     clearParams () {
       this.search = ''
-      console.log('passou', this.search)
     }
   }
 }
@@ -118,5 +117,7 @@ export default {
       height: fit-content;
   .info
     text-align: center;
-
+  @media(max-width: 600px)
+    .form
+      display: block;
 </style>

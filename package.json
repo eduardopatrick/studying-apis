@@ -1,8 +1,8 @@
 {
   "name": "pokedex",
-  "version": "0.0.1",
+  "version": "0.2.1",
   "description": "A pokedex to learn more about pokemons",
-  "productName": "pokedex",
+  "productName": "Pokedex Loaded",
   "author": "Patrick Andrade <eduardo.patrick.98@gmail.com>",
   "private": true,
   "scripts": {

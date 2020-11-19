@@ -61,10 +61,9 @@ export default {
 <style lang="stylus">
 #pokemon-list
     padding-top: 100px;
-  .my-card
+  .my-card.q-card
     margin: 10px;
-    width: 100%;
-    max-width: 150px;
+    max-width: 280px;
     border-radius: 10%;
     border: black solid 2px;
     a
@@ -75,4 +74,7 @@ export default {
       text-align: center;
       margin-bottom: 0px;
       text-transform: capitalize
+  @media(max-width:600px)
+  #pokemon-list
+    padding-bottom: 150px;
 </style>
