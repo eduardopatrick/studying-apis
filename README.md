@@ -1,10 +1,14 @@
-<<<<<<< README.md
-
-# pokedex (pokedex)
+# pokedex
 
 Front – End Test Project
 
-A pokedex to learn more about pokemons
+A responsive pokedex to learn more about pokemons whatever you are.
+
+## Live Project and Deploy status on Netlify
+#### Live project
+[https://patrick-pokedex.netlify.app/](url)
+#### Deploy status
+[![Netlify Status](https://api.netlify.com/api/v1/badges/eedb0fdf-1f6c-4f24-85df-361f2d959190/deploy-status)](https://app.netlify.com/sites/patrick-pokedex/deploys)
 
 ## Install the dependencies
 ```bash
