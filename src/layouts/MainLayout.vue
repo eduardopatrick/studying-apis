@@ -1,43 +1,22 @@
 <template>
   <q-layout id="q-app" view="lHh Lpr lFf">
-     <List :pokemons="pokemons" :loading="loading" ref="list" />
+    <Navbar ref="navbar"/>
+    <router-view/>
   </q-layout>
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
-import List from '../pages/pokedexList/components/List'
+import Navbar from '../components/Navbar'
 
 export default {
   name: 'MainLayout',
   components: {
-    List
+    Navbar
   },
   data () {
     return {
       loading: false
     }
-  },
-  async beforeMount () {
-    try {
-      await this.getAllPokemons()
-    } catch (error) {
-      this.$q.notify({
-        color: 'negative',
-        message: 'Pokedex: falha ao carregar pokemons'
-      })
-    } finally {
-    }
-  },
-  methods: {
-    ...mapActions('pokemons', [
-      'getAllPokemons'
-    ])
-  },
-  computed: {
-    ...mapGetters('pokemons', [
-      'pokemons'
-    ])
   }
 }
 </script>
@@ -45,7 +24,12 @@ export default {
 <style lang="stylus">
 #q-app
   font-family: 'PS2P';
-  background: rgb(57,32,102);
-  background: linear-gradient(90deg, rgba(57,32,102,1) 20%, rgba(0,212,255,1) 50%, rgba(57,32,102,1) 80%);
+  background: rgb(70,193,238);
+  background: linear-gradient(180deg, rgba(70,193,238,1) 16%, rgba(28,204,122,1) 68%, rgba(79,202,152,1) 82%);
 
+  .pokemon-img
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
 </style>
