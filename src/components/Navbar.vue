@@ -3,8 +3,13 @@
     <q-header>
       <q-toolbar class="flex">
         <div class="row full-width">
-          <router-link :to="{ name: 'pokemon-list'}" >
-            <img class="logo" width="150" src="/icons/pokemon-logo.png" alt="pokemon-logo">
+          <router-link :to="{ name: 'pokemon-list' }">
+            <img
+              class="logo"
+              width="150"
+              src="/icons/pokemon-logo.png"
+              alt="back to home"
+            />
           </router-link>
         </div>
       </q-toolbar>

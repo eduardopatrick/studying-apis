@@ -1,18 +1,20 @@
 <template>
   <q-card class="my-card col-md-4 col-sm-12 col-xs-12">
-          <q-img
-              contain
-              class="pokemon-img"
-              :key="pokemon.url"
-              :alt="`${pokemon.name} + photo`"
-              :src="pokemon.sprites.front_default">
-          </q-img>
-            <router-link
-            class="pokemon-name"
-            :to="{ name: 'pokemon-details', params: { identifier: pokemon.name } }">
-            <p>{{ pokemon.name }}</p>
-            <p>No.{{ pokemon.id }}</p>
-          </router-link>
+    <router-link
+      class="pokemon-name"
+      :to="{ name: 'pokemon-details', params: { identifier: pokemon.name } }"
+    >
+      <q-img
+        contain
+        class="pokemon-img"
+        :key="pokemon.url"
+        :alt="`${pokemon.name} + photo`"
+        :src="pokemon.sprites.front_default"
+      >
+      </q-img>
+      <p>{{ pokemon.name }}</p>
+      <p>No.{{ pokemon.id }}</p>
+    </router-link>
   </q-card>
 </template>
 
@@ -28,5 +30,4 @@ export default {
 };
 </script>
 
-<style lang="stylus">
-</style>
+<style lang="stylus"></style>
