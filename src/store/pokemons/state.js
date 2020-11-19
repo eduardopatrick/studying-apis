@@ -1,6 +1,6 @@
 export default {
-  pokemons: [], // Array of Objects
-  pokemon: {}, // Object
+  pokemons: [],
+  pokemon: {},
   types: [],
-  abilities: []
-}
+  abilities: [],
+};

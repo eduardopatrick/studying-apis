@@ -43,11 +43,13 @@
                   <ul class="list-group">
                     <li v-for="(stats, index) in pokemon.stats" :key="index">
                       {{ stats.stat.name }}
-                      <q-linear-progress size="25px" :value="stats.base_stat/100" color="accent">
-                        <div class="absolute-full flex flex-left">
-                          <q-badge color="white" text-color="accent" :label="stats.base_stat" />
-                        </div>
-                      </q-linear-progress>
+                      <q-circular-progress
+                        show-value
+                        class="text-purple q-ma-md"
+                        :value="stats.base_stat"
+                        size="30px"
+                        color="purple"
+                      />
                     </li>
                   </ul>
                 </q-tab-panel>
@@ -68,49 +70,48 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'PokemonDetails',
-  data () {
+  data() {
     return {
       tab: 'first',
       upFront: true,
-      currentImg: ''
-    }
+      currentImg: '',
+    };
   },
   props: {
     identifier: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
-  async beforeMount () {
+  mounted() {
+    const url = this.pokemon.sprites.front_default;
+    this.currentImg = url;
+  },
+  async beforeMount() {
     try {
-      await this.getPokemonDetail(this.identifier)
+      await this.getPokemonDetail(this.identifier);
       this.$q.notify({
         color: 'positive',
-        message: `Pokedex: Dados de ${this.pokemon.name} carregados com sucesso :)`
-      })
-      this.currentImg = this.pokemon.sprites.front_default
+        message: `Pokedex: ${this.pokemon.name} sucessfull loaded :)`,
+      });
     } catch (error) {
       this.$q.notify({
         color: 'negative',
-        message: 'Pokedex: falha ao carregar pokemons'
-      })
+        message: 'Pokedex: failed to catch pokemon :(',
+      });
     }
   },
   methods: {
-    ...mapActions('pokemons', ['getPokemonDetail'])
+    ...mapActions('pokemons', ['getPokemonDetail']),
   },
   computed: {
-    ...mapGetters('pokemons', ['pokemon'])
-    // pokemonImg () {
-
-    //   return
-    // }
-  }
-}
+    ...mapGetters('pokemons', ['pokemon']),
+  },
+};
 </script>
 
 <style lang="stylus">

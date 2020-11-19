@@ -1,9 +1,9 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
-import routes from './routes'
+import routes from './routes';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 /*
  * If not building with SSR mode, you can
@@ -22,8 +22,8 @@ export default function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> vueRouterMode
     // quasar.conf.js -> build -> publicPath
     mode: 'history',
-    base: process.env.VUE_ROUTER_BASE
-  })
+    base: process.env.VUE_ROUTER_BASE,
+  });
 
-  return Router
+  return Router;
 }

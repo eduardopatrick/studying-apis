@@ -22,10 +22,10 @@ export default {
   props: {
     pokemon: {
       type: Object,
-      required: true
-    }
-  }
-}
+      required: true,
+    },
+  },
+};
 </script>
 
 <style lang="stylus">

@@ -1,61 +1,56 @@
 <template>
-  <div  id="pokemon-list">
-    <poke-filter/>
+  <div id="pokemon-list">
+    <poke-filter />
     <div class="container">
       <div class="row justify-center flex">
         <pokemon-card
           :pokemon="pokemon"
           v-for="(pokemon, index) in pokemons"
           :key="index"
-          />
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
-import PokemonCard from './components/PokemonCard.vue'
-import PokeFilter from './components/PokeFilter.vue'
+import { mapActions, mapGetters } from 'vuex';
+import PokemonCard from './components/PokemonCard.vue';
+import PokeFilter from './components/PokeFilter.vue';
 
 export default {
   components: {
     'pokemon-card': PokemonCard,
-    'poke-filter': PokeFilter
+    'poke-filter': PokeFilter,
   },
   name: 'List',
-  data () {
+  data() {
     return {
-      types: []
-    }
+      types: [],
+    };
   },
-  props: {
-  },
-  async beforeMount () {
+  props: {},
+  async beforeMount() {
     try {
-      await this.getAllPokemons()
+      await this.getAllPokemons();
       this.$q.notify({
         color: 'positive',
-        message: 'Pokedex: Pokemons carregados com sucesso :)'
-      })
+        message: 'Pokedex: We\'ve catches them all :)',
+      });
     } catch (error) {
       this.$q.notify({
         color: 'negative',
-        message: 'Pokedex: falha ao carregar pokemons'
-      })
+        message: 'Pokedex: Couldn\'t to catch them all :(',
+      });
     }
   },
   methods: {
-    ...mapActions('pokemons', [
-      'getAllPokemons'
-    ])
+    ...mapActions('pokemons', ['getAllPokemons']),
   },
   computed: {
-    ...mapGetters('pokemons', [
-      'pokemons'
-    ])
-  }
-}
+    ...mapGetters('pokemons', ['pokemons']),
+  },
+};
 </script>
 
 <style lang="stylus">
