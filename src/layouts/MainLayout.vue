@@ -6,26 +6,29 @@
 </template>
 
 <script>
-import Navbar from '../components/Navbar'
+import Navbar from '../components/Navbar';
 
 export default {
   name: 'MainLayout',
   components: {
-    Navbar
+    Navbar,
   },
-  data () {
+  data() {
     return {
-      loading: false
-    }
-  }
-}
+      loading: false,
+    };
+  },
+};
 </script>
 
 <style lang="stylus">
 #q-app
   font-family: 'PS2P';
   background: rgb(70,193,238);
-  background: linear-gradient(180deg, rgba(70,193,238,1) 16%, rgba(28,204,122,1) 68%, rgba(79,202,152,1) 82%);
+  background: linear-gradient(
+    180deg, rgba(70,193,238,1) 16%,
+    rgba(28,204,122,1) 68%,
+    rgba(79,202,152,1) 82%);
 
   .pokemon-img
     image-rendering: -moz-crisp-edges;

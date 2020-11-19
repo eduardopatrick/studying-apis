@@ -1,4 +1,3 @@
-
 const routes = [
   {
     path: '',
@@ -7,23 +6,23 @@ const routes = [
       {
         path: '/',
         component: () => import('pages/pokedexList/PokemonList.vue'),
-        name: 'pokemon-list'
+        name: 'pokemon-list',
       },
       {
         path: ':identifier',
         props: true,
         component: () => import('pages/pokedexDetail/PokemonDetails.vue'),
-        name: 'pokemon-details'
-      }
-    ]
+        name: 'pokemon-details',
+      },
+    ],
   },
 
   // Always leave this as last one,
   // but you can also remove it
   {
     path: '*',
-    component: () => import('pages/Error404.vue')
-  }
-]
+    component: () => import('pages/Error404.vue'),
+  },
+];
 
-export default routes
+export default routes;

@@ -2,31 +2,54 @@
   <div id="poke-filter">
     <div class="container">
       <div class="row justify-center flex">
-         <q-form class="q-gutter-md form">
-           <div class="select">
-            <q-select @input="clearParams" label="Choice" map-options emit-value v-model="path" :options="options" />
-           </div>
-          <div class="types" v-if="path === 'type'">
-            <q-select emit-value map-options v-model="search" :options="typesOptions" label="Type" />
+        <q-form class="q-gutter-md form">
+          <div class="select">
+            <q-select
+              @input="clearParams"
+              label="Choice"
+              map-options
+              emit-value
+              v-model="path"
+              :options="options"
+            />
           </div>
-          <div  v-if="path === 'ability'"  class="abilities">
-            <q-select emit-value map-options  aria-placeholder="Abilities" v-model="search" :options="abilitiesOptions" label="Ability" />
+          <div class="types" v-if="path === 'type'">
+            <q-select
+              emit-value
+              map-options
+              v-model="search"
+              :options="typesOptions"
+              label="Type"
+            />
+          </div>
+          <div v-if="path === 'ability'" class="abilities">
+            <q-select
+              emit-value
+              map-options
+              aria-placeholder="Abilities"
+              v-model="search"
+              :options="abilitiesOptions"
+              label="Ability"
+            />
           </div>
           <div v-if="path === 'pokemon' || path === 'id'" class="input-field">
-            <q-input :value="search" class="input-field" v-model="search" filled type="search">
+            <q-input
+              emit-value
+              :value="search"
+              class="input-field"
+              v-model="search"
+              filled
+              type="search"
+            >
               <template v-slot:append>
                 <q-icon name="search" />
               </template>
             </q-input>
           </div>
-          <q-btn
-          rounded
-          class="col-md-4"
-          icon="search"
-          @click="submitSearch">
+          <q-btn rounded class="col-md-4" icon="search" @click="submitSearch">
             Search
           </q-btn>
-         </q-form>
+        </q-form>
       </div>
     </div>
     <div class="col-md-12 col-xs-12">
@@ -36,68 +59,66 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
-  data () {
+  data() {
     return {
       search: '', // valor da busca
       path: '', // tipo da busca
       options: [
         {
           label: 'Name',
-          value: 'pokemon'
+          value: 'pokemon',
         },
         {
           label: 'Id',
-          value: 'pokemon'
+          value: 'pokemon',
         },
         {
           label: 'Type',
-          value: 'type'
+          value: 'type',
         },
         {
           label: 'Ability',
-          value: 'ability'
-        }
-
-      ]
-    }
+          value: 'ability',
+        },
+      ],
+    };
   },
-  async beforeMount () {
-    await this.getAbilities()
-    await this.getTypes()
+  async beforeMount() {
+    await this.getAbilities();
+    await this.getTypes();
   },
   computed: {
-    ...mapGetters('pokemons',
-      ['types', 'abilities', 'pokemons']),
-    abilitiesOptions () { // copy with another format from object, to use at select options
+    ...mapGetters('pokemons', ['types', 'abilities', 'pokemons']),
+    abilitiesOptions() {
+      // copy with another format from object, to use at select options
       return this.abilities.map(ability => ({
         value: ability.name,
-        label: ability.name
-      }))
+        label: ability.name,
+      }));
     },
-    typesOptions () {
+    typesOptions() {
       return this.types.map(type => ({
         value: type.name,
-        label: type.name
-      }))
-    }
+        label: type.name,
+      }));
+    },
   },
   methods: {
-    ...mapActions('pokemons',
-      ['getAbilities', 'getTypes', 'filterPokemons']),
-    async submitSearch () {
+    ...mapActions('pokemons', ['getAbilities', 'getTypes', 'filterPokemons']),
+    async submitSearch() {
       await this.filterPokemons({
         path: this.path,
-        value: this.search
-      })
+        value: this.search,
+      });
     },
-    clearParams () {
-      this.search = ''
-    }
-  }
-}
+    clearParams() {
+      this.search = '';
+    },
+  },
+};
 </script>
 
 <style lang="stylus">

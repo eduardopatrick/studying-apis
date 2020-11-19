@@ -6,7 +6,7 @@
       </div>
 
       <div class="text-h2" style="opacity:.4">
-        Oops. Nothing here...
+        Oops. Pokedex doesn't have power here...
       </div>
 
       <q-btn
@@ -15,7 +15,7 @@
         text-color="blue"
         unelevated
         to="/"
-        label="Go Home"
+        label="Go back Home"
         no-caps
       />
     </div>
@@ -24,6 +24,6 @@
 
 <script>
 export default {
-  name: 'Error404'
-}
+  name: 'Error404',
+};
 </script>
