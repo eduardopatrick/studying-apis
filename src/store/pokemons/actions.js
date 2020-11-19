@@ -8,6 +8,26 @@ export const getAllPokemons = async ({ commit }, options = {}) => {
 }
 
 export const getPokemonDetail = async ({ commit }, indentifier) => {
-  const pokemonInfo = await pokemonService.searchForPokemon(indentifier)
+  const pokemonInfo = await pokemonService.searchForPokemon({ name: indentifier })
   commit('setPokemon', pokemonInfo)
+}
+
+export const getAbilities = async ({ commit }) => {
+  const abilities = await pokemonService.getAbilities()
+  commit('setAbilities', abilities)
+}
+
+export const getTypes = async ({ commit }) => {
+  const types = await pokemonService.getTypes()
+  commit('setTypes', types)
+}
+
+export const filterPokemons = async ({ commit }, { path, value }) => {
+  const result = await pokemonService.filterPokemons(path, value)
+  if (path === 'pokemon') {
+    commit('setPokemons', [result]) // unico objeto com array de informações sobre 1 pokemon
+  } else {
+    console.log('igual a pokemons')
+    commit('setPokemons', result.pokemon) // pokemons que possuem aquele atributo em algum lugar
+  }
 }

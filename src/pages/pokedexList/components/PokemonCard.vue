@@ -2,14 +2,14 @@
   <q-card class="my-card col-md-4 col-sm-12 col-xs-12">
           <q-img
               contain
+              class="pokemon-img"
               :key="pokemon.url"
               :alt="`${pokemon.name} + photo`"
-              :src="
-            `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`">
+              :src="pokemon.sprites.front_default">
           </q-img>
             <router-link
             class="pokemon-name"
-            :to="{ name: 'pokemon-details', params: { id: pokemon.id } }">
+            :to="{ name: 'pokemon-details', params: { identifier: pokemon.name } }">
             <p>{{ pokemon.name }}</p>
             <p>No.{{ pokemon.id }}</p>
           </router-link>
