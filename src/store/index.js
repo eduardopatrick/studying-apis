@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import createPersistedState from 'vuex-persistedstate';
 import pokemons from './pokemons';
+import state from './pokemons/state';
 
 Vue.use(Vuex);
 
@@ -13,15 +15,21 @@ Vue.use(Vuex);
  * with the Store instance.
  */
 
+const dataState = createPersistedState({
+  paths: ['pokemons'],
+});
+
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
       pokemons,
+      state,
     },
 
     // enable strict mode (adds overhead!)
     // for dev mode only
     strict: process.env.DEV,
+    plugins: [dataState],
   });
 
   return Store;
